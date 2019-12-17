@@ -58,5 +58,18 @@ public class TacheController {
 		tacheService.affecterAvancementTache(idTache, idAvancement);
 		return true;
 	}
+	
+	@PutMapping("/personne/{idTache}/{idPersonne}")
+	public boolean affecterPersonneTache (@PathVariable long idTache,@PathVariable long idPersonne) {
+		tacheService.affecterPersonneTache(idTache, idPersonne);
+		return true;
+	}
+	
+	@PutMapping("/all/{idTache}/{idAvancement}/{idPersonne}")
+	public boolean affecterTache(@PathVariable long idTache, @PathVariable long idAvancement, @PathVariable long idPersonne) {
+		tacheService.affecterAvancementTache(idTache, idAvancement);
+		tacheService.affecterPersonneTache(idTache, idPersonne);
+		return true;
+	}
 
 }

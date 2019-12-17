@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -23,6 +24,7 @@ public class Tache implements Serializable {
 	private Date date;
 	private double duree;
 	private Avancement avancement;
+	private Personne personne;
 	
 	
 	public static long getSerialversionuid() {
@@ -72,6 +74,17 @@ public class Tache implements Serializable {
 
 	public void setAvancement(Avancement avancement) {
 		this.avancement = avancement;
+	}
+	
+	
+	@ManyToOne
+	@JoinColumn(name="id_personne")
+	public Personne getPersonne() {
+		return personne;
+	}
+
+	public void setPersonne(Personne personne) {
+		this.personne = personne;
 	}
 
 	@Override

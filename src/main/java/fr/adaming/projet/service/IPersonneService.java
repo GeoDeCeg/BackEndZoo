@@ -14,12 +14,11 @@ public interface IPersonneService {
 	
 	public Personne getPersonneById (long idPersonne);
 	
-	public boolean affecterTachePersonne (long idPersonne, long idTache);
 	
 	public boolean affecterRolePersonne (long idPersonne, long idRole);
 	
 	public boolean affecterZonePersonne (long idPersonne, long idZone);
 	
-	
+	public long count();
 
 }

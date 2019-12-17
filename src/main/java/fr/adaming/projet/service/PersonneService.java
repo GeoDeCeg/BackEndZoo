@@ -7,11 +7,11 @@ import org.springframework.stereotype.Service;
 
 import fr.adaming.projet.model.Personne;
 import fr.adaming.projet.model.Role;
-import fr.adaming.projet.model.Tache;
+
 import fr.adaming.projet.model.Zone;
 import fr.adaming.projet.repository.IPersonneRepository;
 import fr.adaming.projet.repository.IRoleRepository;
-import fr.adaming.projet.repository.ITacheRepository;
+
 import fr.adaming.projet.repository.IZoneRepository;
 
 @Service
@@ -19,8 +19,6 @@ public class PersonneService implements IPersonneService {
 	
 	@Autowired
 	IPersonneRepository personneRepository;
-	@Autowired
-	ITacheRepository tacheRepository;
 	@Autowired
 	IRoleRepository roleRepository;
 	@Autowired
@@ -47,21 +45,6 @@ public class PersonneService implements IPersonneService {
 		return personneRepository.findById(idPersonne).get();
 	}
 
-	@Override
-	public boolean affecterTachePersonne(long idPersonne, long idTache) {
-		
-		Personne personne = new Personne();
-		Tache tache = new Tache();
-		
-		personne = personneRepository.findById(idPersonne).get();
-		tache = tacheRepository.findById(idTache).get();
-		
-		personne.setTache(tache);
-		personneRepository.save(personne);		
-		
-		return true;
-		
-	}
 
 	@Override
 	public boolean affecterRolePersonne(long idPersonne, long idRole) {
@@ -89,6 +72,12 @@ public class PersonneService implements IPersonneService {
 		personneRepository.save(personne);
 				
 		return true;
+	}
+
+	@Override
+	public long count() {
+		return personneRepository.count();
+		
 	}
 
 	

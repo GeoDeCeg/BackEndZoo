@@ -23,6 +23,11 @@ public class PersonneController {
 
 	@Autowired
 	IPersonneService personneService;
+	
+	@GetMapping("/count")
+	public long count () {
+		return personneService.count();
+	}
 
 	@GetMapping
 	public List<Personne> getAllPersonne() {
@@ -52,12 +57,6 @@ public class PersonneController {
 		return true;
 	}
 
-	@PutMapping("/tache/{idPersonne}/{idTache}")
-	public boolean affecterTachePersonne(@PathVariable long idPersonne,@PathVariable long idTache) {
-		personneService.affecterTachePersonne(idPersonne, idTache);
-		return true;
-	}
-
 	@PutMapping("/role/{idPersonne}/{idRole}")
 	public boolean affecterRolePersonne(@PathVariable long idPersonne,@PathVariable long idRole) {
 		personneService.affecterRolePersonne(idPersonne, idRole);
@@ -70,11 +69,11 @@ public class PersonneController {
 		return true;
 	}
 	
-	@PutMapping("/all/{idPersonne}/{idRole}/{idZone}/{idTache}")
-	public boolean affecterPersonne(@PathVariable long idPersonne,@PathVariable long idRole,@PathVariable long idZone,@PathVariable long idTache) {
+	@PutMapping("/all/{idPersonne}/{idRole}/{idZone}")
+	public boolean affecterPersonne(@PathVariable long idPersonne,@PathVariable long idRole,@PathVariable long idZone) {
 		personneService.affecterZonePersonne(idPersonne, idZone);
 		personneService.affecterRolePersonne(idPersonne, idRole);
-		personneService.affecterTachePersonne(idPersonne, idTache);
+//		personneService.affecterTachePersonne(idPersonne, idTache);
 		return true;
 	}
 	

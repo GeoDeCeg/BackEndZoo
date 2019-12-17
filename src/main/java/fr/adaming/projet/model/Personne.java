@@ -24,7 +24,6 @@ public class Personne implements Serializable {
 	private String login;
 	private String password;
 	private String email;
-	private Tache tache;
 	private Zone zone;
 	private Role role;
 	
@@ -82,16 +81,6 @@ public class Personne implements Serializable {
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	@ManyToOne
-	@JoinColumn(name="id_tache")
-	public Tache getTache() {
-		return tache;
-	}
-
-	public void setTache(Tache tache) {
-		this.tache = tache;
 	}
 	
 	@ManyToOne
