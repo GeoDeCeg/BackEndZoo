@@ -35,4 +35,10 @@ public class ZoneService implements IZoneService{
 		return zoneRepository.findById(idZone).get();
 	}
 
+	@Override
+	public long count() {
+		// TODO Auto-generated method stub
+		return zoneRepository.count();
+	}
+
 }

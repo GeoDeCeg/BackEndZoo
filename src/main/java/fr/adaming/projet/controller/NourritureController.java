@@ -24,6 +24,11 @@ public class NourritureController {
 	@Autowired
 	INourritureService nourritureService;
 	
+	@GetMapping("/count")
+	public long count() {
+		return nourritureService.count();
+	}
+	
 	@PostMapping
 	public Nourriture addNourriture (@RequestBody Nourriture nourriture) {
 		return nourritureService.saveOrUpdateNourriture(nourriture);

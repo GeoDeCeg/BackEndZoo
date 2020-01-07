@@ -15,5 +15,7 @@ public interface IEnclosService {
 	public Enclos getEnclosById(long idEnclos);
 	
 	public boolean affecterZoneEnclos(long idEnclos, long idZone);
+	
+	public long count();
 
 }

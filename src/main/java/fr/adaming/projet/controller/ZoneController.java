@@ -24,6 +24,11 @@ public class ZoneController {
 	@Autowired
 	IZoneService zoneService;
 	
+	@GetMapping("/count")
+	public long count() {
+		return zoneService.count();
+	}
+	
 	@PostMapping
 	public Zone addZone (@RequestBody Zone zone) {
 		return zoneService.saveOrUpdateZone(zone);

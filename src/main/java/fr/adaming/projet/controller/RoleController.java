@@ -24,6 +24,11 @@ public class RoleController {
 	@Autowired
 	IRoleService roleService;
 	
+	@GetMapping("/count")
+	public long count() {
+		return roleService.count();
+	}
+	
 	@PostMapping
 	public Role addRole (@RequestBody Role role) {
 		return roleService.saveOrUpdateRole(role);

@@ -35,4 +35,10 @@ public class AvancementService implements IAvancementService{
 		return avancementRepository.findById(idAvancement).get();
 	}
 
+	@Override
+	public long count() {
+		// TODO Auto-generated method stub
+		return avancementRepository.count();
+	}
+
 }

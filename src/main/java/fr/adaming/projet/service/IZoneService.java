@@ -13,5 +13,7 @@ public interface IZoneService {
 	public List<Zone> getAllZone();
 	
 	public Zone getZoneById(long idZone);
+	
+	public long count();
 
 }

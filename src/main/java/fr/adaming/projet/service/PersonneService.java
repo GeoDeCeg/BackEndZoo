@@ -80,6 +80,28 @@ public class PersonneService implements IPersonneService {
 		
 	}
 
+	@Override
+	public List<Personne> findByLogin(String login) {
+		// TODO Auto-generated method stub
+		return personneRepository.findByLogin(login);
+	}
+
+	@Override
+	public boolean existsPersonneByLogin(String login) {
+		// TODO Auto-generated method stub
+		return personneRepository.existsPersonneByLogin(login);
+	}
+
+	@Override
+	public Personne findByLoginAndPassword(String login, String password) {
+		Personne personne = personneRepository.findByLoginAndPassword(login, password);
+		if(personne != null) {
+			return personne;
+		}else {
+		return new Personne();
+		}
+	}
+
 	
 
 }

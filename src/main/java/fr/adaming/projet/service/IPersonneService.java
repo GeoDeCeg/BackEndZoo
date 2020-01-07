@@ -14,11 +14,16 @@ public interface IPersonneService {
 	
 	public Personne getPersonneById (long idPersonne);
 	
-	
 	public boolean affecterRolePersonne (long idPersonne, long idRole);
 	
 	public boolean affecterZonePersonne (long idPersonne, long idZone);
 	
 	public long count();
+	
+	public List<Personne> findByLogin(String login);
+	
+	public boolean existsPersonneByLogin (String login);
+	
+	public Personne findByLoginAndPassword(String login, String password);
 
 }

@@ -35,4 +35,10 @@ public class RoleService implements IRoleService {
 		return roleRepository.findById(idRole).get();
 	}
 
+	@Override
+	public long count() {
+		// TODO Auto-generated method stub
+		return roleRepository.count();
+	}
+
 }

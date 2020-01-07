@@ -35,4 +35,10 @@ public class NourritureService implements INourritureService {
 		return nourritureRepository.findById(idNourriture).get();
 	}
 
+	@Override
+	public long count() {
+		// TODO Auto-generated method stub
+		return nourritureRepository.count();
+	}
+
 }

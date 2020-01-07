@@ -2,6 +2,7 @@ package fr.adaming.projet.controller;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -23,6 +24,17 @@ public class TacheController {
 	
 	@Autowired
 	ITacheService tacheService;
+	
+	@GetMapping("/count")
+	public long count () {
+		return tacheService.count();
+	}
+	
+	@GetMapping("/byP/{idPersonne}")
+	public List<Tache> getTacheByIdPersonne (@PathVariable long idPersonne){
+		
+		return tacheService.getTacheByIdPersonne(idPersonne);
+	}
 	
 	@PostMapping
 	public Tache addTache(@RequestBody Tache tache) {

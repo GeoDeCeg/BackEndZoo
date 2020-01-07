@@ -24,6 +24,11 @@ public class AnimalController {
 	@Autowired
 	IAnimalService animalService;
 	
+	@GetMapping("/count")
+	public long count() {
+		return animalService.count();
+	}
+	
 	@GetMapping
 	public List<Animal> getAllAnimal(){
 		return animalService.getAllAnimal();
@@ -61,6 +66,12 @@ public class AnimalController {
 	@PutMapping("/nourriture/{idAnimal}/{idNourriture}")
 	public boolean affecterNourritureAnimal (@PathVariable long idAnimal,@PathVariable long idNourriture) {
 		animalService.affecterNourritureAnimal(idAnimal, idNourriture);
+		return true;
+	}
+	
+	@PutMapping("/all/{idAnimal}/{idEnclos}/{idNourriture}")
+	public boolean affecterNourritureAnimal (@PathVariable long idAnimal,@PathVariable long idEnclos,@PathVariable long idNourriture) {
+		animalService.affecterAnimal(idAnimal, idEnclos, idNourriture);
 		return true;
 	}
 	

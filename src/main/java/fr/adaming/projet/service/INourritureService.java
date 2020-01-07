@@ -13,4 +13,6 @@ public interface INourritureService {
 	public List<Nourriture> getAllNourriture ();
 	
 	public Nourriture getNourritureById (long idNourriture);
+	
+	public long count();
 }

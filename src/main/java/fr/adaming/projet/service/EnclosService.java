@@ -54,4 +54,10 @@ public class EnclosService implements IEnclosService {
 		
 	}
 
+	@Override
+	public long count() {
+		// TODO Auto-generated method stub
+		return enclosRepository.count();
+	}
+
 }

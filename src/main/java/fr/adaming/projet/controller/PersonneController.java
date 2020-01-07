@@ -1,6 +1,9 @@
 package fr.adaming.projet.controller;
 
+import java.security.Key;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -13,14 +16,23 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+
 import fr.adaming.projet.model.Personne;
+import fr.adaming.projet.model.Token;
 import fr.adaming.projet.service.IPersonneService;
+import io.jsonwebtoken.Jwts;
+
+import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.security.Keys;
+
 
 @RestController
 @RequestMapping("personne")
 @CrossOrigin("http://localhost:4200")
 public class PersonneController {
 
+	Key cle = Keys.secretKeyFor(SignatureAlgorithm.HS256);
+	
 	@Autowired
 	IPersonneService personneService;
 	
@@ -75,6 +87,27 @@ public class PersonneController {
 		personneService.affecterRolePersonne(idPersonne, idRole);
 //		personneService.affecterTachePersonne(idPersonne, idTache);
 		return true;
+	}
+	
+	@PostMapping("/login")
+	public Token findByLoginAndMdp(@RequestBody Personne personne) {
+		Personne p =  personneService.findByLoginAndPassword(personne.getLogin(), personne.getPassword());
+		if (p.getIdPersonne() != 0 ) {
+		String token;
+		Map<String, Object> claims = new HashMap<String, Object>();
+		claims.put("id", p.getIdPersonne());
+		claims.put("nom", p.getNom());
+		claims.put("prenom", p.getPrenom());
+		claims.put("email", p.getEmail());
+		claims.put("login", p.getLogin());
+		claims.put("role", p.getRole());
+		claims.put("zone", p.getZone());
+		token = Jwts.builder().addClaims(claims).signWith(cle).compact();
+		Token t = new Token();
+		t.setToken(token);
+		return t;
+		}
+		return null;
 	}
 	
 

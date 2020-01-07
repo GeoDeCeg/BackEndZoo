@@ -24,6 +24,11 @@ public class AvancementController {
 	@Autowired
 	IAvancementService avancementService;
 	
+	@GetMapping("/count")
+	public long count() {
+		return avancementService.count();
+	}
+	
 	@PostMapping
 	public Avancement addAvancement (@RequestBody Avancement avancement) {
 		return avancementService.saveOrUpdateAvancement(avancement);

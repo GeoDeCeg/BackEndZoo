@@ -13,4 +13,6 @@ public interface IAvancementService {
 	public List<Avancement> getAllAvancement();
 	
 	public Avancement getAvancementById(long idAvancement);
+	
+	public long count();
 }

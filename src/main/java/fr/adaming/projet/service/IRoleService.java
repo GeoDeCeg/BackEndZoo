@@ -13,5 +13,7 @@ public interface IRoleService {
 	public List<Role> getAllRole();
 	
 	public Role getRoleById (long idRole);
+	
+	public long count();
 
 }

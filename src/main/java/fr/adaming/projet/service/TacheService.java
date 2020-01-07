@@ -1,5 +1,6 @@
 package fr.adaming.projet.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,7 @@ import fr.adaming.projet.repository.ITacheRepository;
 
 @Service
 public class TacheService implements ITacheService {
-	
+
 	@Autowired
 	ITacheRepository tacheRepository;
 	@Autowired
@@ -45,16 +46,16 @@ public class TacheService implements ITacheService {
 
 	@Override
 	public boolean affecterAvancementTache(long idTache, long idAvancement) {
-		
+
 		Tache tache = new Tache();
 		Avancement avancement = new Avancement();
-		
+
 		tache = tacheRepository.findById(idTache).get();
 		avancement = avancementRepository.findById(idAvancement).get();
-		
+
 		tache.setAvancement(avancement);
-		tacheRepository.save(tache);		
-		
+		tacheRepository.save(tache);
+
 		return true;
 	}
 
@@ -62,14 +63,39 @@ public class TacheService implements ITacheService {
 	public boolean affecterPersonneTache(long idTache, long idPersonne) {
 		Tache tache = new Tache();
 		Personne personne = new Personne();
-		
+
 		tache = tacheRepository.findById(idTache).get();
 		personne = personneRepository.findById(idPersonne).get();
-		
+
 		tache.setPersonne(personne);
 		tacheRepository.save(tache);
-		
+
 		return true;
 	}
 
+	@Override
+	public long count() {
+		return tacheRepository.count();
+	}
+
+	@Override
+	public List<Tache> getTacheByIdPersonne(long idPersonne) {
+
+		List<Tache> listeTache = tacheRepository.findAll();
+		List<Tache> listeGroup = new ArrayList<Tache>();
+		
+		for (int i = 0; i < listeTache.size(); i++) {
+			Tache tache = listeTache.get(i);
+			if(idPersonne == tache.getPersonne().getIdPersonne()) {
+				listeGroup.add(tache);
+			}
+		}
+		
+		
+		
+		return listeGroup;
+	}
+
+	
+	
 }

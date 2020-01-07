@@ -17,5 +17,9 @@ public interface IAnimalService {
 	public boolean affecterEnclosAnimal (long idAnimal, long idEnclos);
 	
 	public boolean affecterNourritureAnimal (long idAnimal, long idNourriture);
+	
+	public boolean affecterAnimal (long idAnimal, long idEnclos, long idNourriture);
+	
+	public long count();
 
 }

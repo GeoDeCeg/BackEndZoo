@@ -14,8 +14,12 @@ public interface ITacheService {
 	
 	public Tache getTacheById (long idTache);
 	
+	public List<Tache> getTacheByIdPersonne (long idPersonne);
+	
 	public boolean affecterAvancementTache (long idTache, long idAvancement);
 	
 	public boolean affecterPersonneTache (long idTache, long idPersonne);
+	
+	public long count();
 
 }

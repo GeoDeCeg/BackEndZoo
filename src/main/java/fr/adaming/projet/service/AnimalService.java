@@ -68,5 +68,28 @@ public class AnimalService implements IAnimalService {
 		animalRepository.save(animal);
 		return true;
 	}
+	
+	@Override
+	public long count() {
+		return animalRepository.count();
+	}
+
+	@Override
+	public boolean affecterAnimal(long idAnimal, long idEnclos, long idNourriture) {
+		Animal animal = new Animal();
+		Enclos enclos = new Enclos();
+		Nourriture nourriture = new Nourriture();
+		
+		animal = animalRepository.findById(idAnimal).get();
+		enclos = enclosRepository.findById(idEnclos).get();
+		nourriture = nourritureRepository.findById(idNourriture).get();
+		
+		animal.setEnclos(enclos);
+		animal.setNourriture(nourriture);
+		
+		animalRepository.save(animal);
+				
+		return true;
+	}
 
 }

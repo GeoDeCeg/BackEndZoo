@@ -24,6 +24,11 @@ public class EnclosController {
 	@Autowired
 	IEnclosService enclosService;
 	
+	@GetMapping("/count")
+	public long count() {
+		return enclosService.count();
+	}
+	
 	@PostMapping
 	public Enclos AddEnclos (@RequestBody Enclos enclos) {
 		return enclosService.saveOrUpdateEnclos(enclos);
